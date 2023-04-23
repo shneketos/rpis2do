@@ -1,0 +1,64 @@
+.todo-item {
+  border-bottom: 1px solid #eaeaea;
+  font-size: 1.2rem;
+  list-style-type: none;
+  padding: 17px 0;
+  span {
+    cursor: pointer;
+  }
+}
+.hide {
+  display: none;
+}
+.todo-item-content {
+  border: 1px solid #dfdfdf;
+  padding: 10px;
+  width: 100%;
+}
+.todo-item-status {
+  background: none;
+  border: none;
+}
+.todo-item-checkbox {
+  cursor: pointer;
+  margin-right: 15px;
+}
+.todo-item-button {
+  background: none;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  float: right;
+  font-size: 13px;
+  height: 50px;
+  margin: -10px 0 0 10px;
+  outline: none;
+  width: 50px;
+}
+.todo-item-content-done {
+  font-style: italic;
+  color: rgb(89, 89, 89);
+  opacity: 0.4;
+  text-decoration: line-through;
+  border: none;
+  font-size: 18px;
+  font-weight: 300;
+}
+.todo-item-edit {
+  font-size: 16px;
+  overflow-wrap: break-word;
+  width: 60%;
+  border-radius: 8px;
+  letter-spacing: 1px;
+  border: 0.2px solid rgba(108, 108, 108, 0.56);
+  font-weight: 400;
+  padding: 5px 10px;
+}
+@media (max-width: 600px) {
+  .todo-item {
+    width: 415px;
+  }
+  .todo-item-button {
+    width: 24px;
+  }
+}
