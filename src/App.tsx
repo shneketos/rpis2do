@@ -12,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element=<Main /> />
         <Route path="/chart" element=<Chart /> />
+        <Route path="*" element=<Main /> />
       </Routes>
       <Footer />
     </div>
