@@ -63,114 +63,112 @@ const Main = () => {
   };
   return (
     <>
-      <main className="container">
-        <div className="inner">
-          <div className="form-container">
-            <input
-              className="input-text"
-              type="text"
-              name="title"
-              placeholder="Введите название заметки"
-              value={inputValue}
-              maxLength={30}
-              onChange={handleInputChange}
-              onKeyDown={handleInputEnter}
-              onCompositionStart={handleCompositionStart}
-              onCompositionEnd={handleCompositionEnd}
-            />
-            <button
-              type="submit"
-              className="input-submit"
-              onClick={handleTodoItem}
-            >
-              {inputValue.trim() === "" ? (
-                <img src={addIn} alt="" width={25} height={25} />
-              ) : (
-                <img src={add} alt="" width={25} height={25} />
-              )}
-            </button>
-          </div>
-          <div className="options">
-            <div className="sort">
-              <div className="sort-type">
-                <ul>
-                  <li>
-                    <button
-                      className={sortType === "" ? "activeSort" : ""}
-                      onClick={() => setSortType("")}
-                    >
-                      Сначала новые
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      className={sortType === "reverse" ? "activeSort" : ""}
-                      onClick={() => setSortType("reverse")}
-                    >
-                      Сначала старые
-                    </button>
-                  </li>
-                </ul>
-              </div>
-              <div className="sort-status">
-                <ul>
-                  <li>
-                    <button
-                      className={visible === "all" ? "activeVisible" : ""}
-                      onClick={() => setVisible("all")}
-                    >
-                      Все
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      className={visible === "active" ? "activeVisible" : ""}
-                      onClick={() => setVisible("active")}
-                    >
-                      Активные
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      className={visible === "done" ? "activeVisible" : ""}
-                      onClick={() => setVisible("done")}
-                    >
-                      Завершенные
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="search">
-              <div className="search-left">
-                <input
-                  placeholder="Поиск"
-                  value={searchField}
-                  onChange={(e) => setSearchField(e.target.value)}
-                />
-
-                <img src={search} alt="" />
-              </div>
-              <div
-                onClick={() => setIndex(!index)}
-                className={`search-right ${index ? "indexOn" : "indexOf"}`}
-              >{`Индексация: ${index ? "Вкл" : "Выкл"}`}</div>
-            </div>
-          </div>
-          <ul className="todoslist">
-            {todoItem.length === 0 ? (
-              <></>
+      <main className="Main">
+        <div className="form-container">
+          <input
+            className="input-text"
+            type="text"
+            name="title"
+            placeholder="Введите название заметки"
+            value={inputValue}
+            maxLength={30}
+            onChange={handleInputChange}
+            onKeyDown={handleInputEnter}
+            onCompositionStart={handleCompositionStart}
+            onCompositionEnd={handleCompositionEnd}
+          />
+          <button
+            type="submit"
+            className="input-submit"
+            onClick={handleTodoItem}
+          >
+            {inputValue.trim() === "" ? (
+              <img src={addIn} alt="" width={25} height={25} />
             ) : (
-              <TodosItem
-                todoItem={sortType === "reverse" ? displayOrder : todoItem}
-                setTodoItem={setTodoItem}
-                visible={visible}
-                searchField={searchField}
-                index={index}
-              />
+              <img src={add} alt="" width={25} height={25} />
             )}
-          </ul>
+          </button>
         </div>
+        <div className="options">
+          <div className="sort">
+            <div className="sort-type">
+              <ul>
+                <li>
+                  <button
+                    className={sortType === "" ? "activeSort" : ""}
+                    onClick={() => setSortType("")}
+                  >
+                    Сначала новые
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className={sortType === "reverse" ? "activeSort" : ""}
+                    onClick={() => setSortType("reverse")}
+                  >
+                    Сначала старые
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div className="sort-status">
+              <ul>
+                <li>
+                  <button
+                    className={visible === "all" ? "activeVisible" : ""}
+                    onClick={() => setVisible("all")}
+                  >
+                    Все
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className={visible === "active" ? "activeVisible" : ""}
+                    onClick={() => setVisible("active")}
+                  >
+                    Активные
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className={visible === "done" ? "activeVisible" : ""}
+                    onClick={() => setVisible("done")}
+                  >
+                    Завершенные
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="search">
+            <div className="search-left">
+              <input
+                placeholder="Поиск"
+                value={searchField}
+                onChange={(e) => setSearchField(e.target.value)}
+              />
+
+              <img src={search} alt="" />
+            </div>
+            <div
+              onClick={() => setIndex(!index)}
+              className={`search-right ${index ? "indexOn" : "indexOf"}`}
+            >{`Индексация: ${index ? "Вкл" : "Выкл"}`}</div>
+          </div>
+        </div>
+        <ul className="todoslist">
+          {todoItem.length === 0 ? (
+            <></>
+          ) : (
+            <TodosItem
+              todoItem={sortType === "reverse" ? displayOrder : todoItem}
+              setTodoItem={setTodoItem}
+              visible={visible}
+              searchField={searchField}
+              index={index}
+            />
+          )}
+        </ul>
       </main>
     </>
   );
