@@ -6,6 +6,9 @@ import Chart from "./Pages/Charts/Chart";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 function App() {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="app">
       <Header />
