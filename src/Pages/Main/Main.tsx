@@ -6,6 +6,7 @@ import { TodoItemType } from "../../type";
 import add from "../../img/add.svg";
 import addIn from "../../img/addIn.svg";
 import search from "../../img/search.svg";
+import EmptyTodos from "../../components/EmptyTodos/EmptyTodos";
 const Main = () => {
   const [inputValue, setInputValue] = useState<string>("");
   const [sortType, setSortType] = useState<string>("");
@@ -89,86 +90,92 @@ const Main = () => {
             )}
           </button>
         </div>
-        <div className="options">
-          <div className="sort">
-            <div className="sort-type">
-              <ul>
-                <li>
-                  <button
-                    className={sortType === "" ? "activeSort" : ""}
-                    onClick={() => setSortType("")}
-                  >
-                    Сначала новые
-                  </button>
-                </li>
-                <li>
-                  <button
-                    className={sortType === "reverse" ? "activeSort" : ""}
-                    onClick={() => setSortType("reverse")}
-                  >
-                    Сначала старые
-                  </button>
-                </li>
-              </ul>
-            </div>
-            <div className="sort-status">
-              <ul>
-                <li>
-                  <button
-                    className={visible === "all" ? "activeVisible" : ""}
-                    onClick={() => setVisible("all")}
-                  >
-                    Все
-                  </button>
-                </li>
-                <li>
-                  <button
-                    className={visible === "active" ? "activeVisible" : ""}
-                    onClick={() => setVisible("active")}
-                  >
-                    Активные
-                  </button>
-                </li>
-                <li>
-                  <button
-                    className={visible === "done" ? "activeVisible" : ""}
-                    onClick={() => setVisible("done")}
-                  >
-                    Завершенные
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="search">
-            <div className="search-left">
-              <input
-                placeholder="Поиск"
-                value={searchField}
-                onChange={(e) => setSearchField(e.target.value)}
-              />
+        {todoItem.length === 0 ? (
+          <EmptyTodos />
+        ) : (
+          <>
+            <div className="options">
+              <div className="sort">
+                <div className="sort-type">
+                  <ul>
+                    <li>
+                      <button
+                        className={sortType === "" ? "activeSort" : ""}
+                        onClick={() => setSortType("")}
+                      >
+                        Сначала новые
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        className={sortType === "reverse" ? "activeSort" : ""}
+                        onClick={() => setSortType("reverse")}
+                      >
+                        Сначала старые
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+                <div className="sort-status">
+                  <ul>
+                    <li>
+                      <button
+                        className={visible === "all" ? "activeVisible" : ""}
+                        onClick={() => setVisible("all")}
+                      >
+                        Все
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        className={visible === "active" ? "activeVisible" : ""}
+                        onClick={() => setVisible("active")}
+                      >
+                        Активные
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        className={visible === "done" ? "activeVisible" : ""}
+                        onClick={() => setVisible("done")}
+                      >
+                        Завершенные
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="search">
+                <div className="search-left">
+                  <input
+                    placeholder="Поиск"
+                    value={searchField}
+                    onChange={(e) => setSearchField(e.target.value)}
+                  />
 
-              <img src={search} alt="" />
+                  <img src={search} alt="" />
+                </div>
+                <div
+                  onClick={() => setIndex(!index)}
+                  className={`search-right ${index ? "indexOn" : "indexOf"}`}
+                >{`Индексация: ${index ? "Вкл" : "Выкл"}`}</div>
+              </div>
             </div>
-            <div
-              onClick={() => setIndex(!index)}
-              className={`search-right ${index ? "indexOn" : "indexOf"}`}
-            >{`Индексация: ${index ? "Вкл" : "Выкл"}`}</div>
-          </div>
-        </div>
-        <ul className="todoslist">
-          {todoItem.length === 0 ? (
-            <></>
-          ) : (
-            <TodosItem
-              todoItem={sortType === "reverse" ? displayOrder : todoItem}
-              setTodoItem={setTodoItem}
-              visible={visible}
-              searchField={searchField}
-              index={index}
-            />
-          )}
-        </ul>
+            <ul className="todoslist">
+              {todoItem.length === 0 ? (
+                <></>
+              ) : (
+                <TodosItem
+                  todoItem={sortType === "reverse" ? displayOrder : todoItem}
+                  setTodoItem={setTodoItem}
+                  visible={visible}
+                  searchField={searchField}
+                  index={index}
+                />
+              )}
+            </ul>
+          </>
+        )}
       </main>
     </>
   );
