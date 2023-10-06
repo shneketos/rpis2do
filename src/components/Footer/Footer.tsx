@@ -3,12 +3,9 @@ import "./Footer.scss";
 export const Footer = () => {
   return (
     <footer>
-      <span>
-        Created by <a href="https://vk.com/shnkwtsch">Sheen</a> & Co (OG SM1R,DJ
-        VAN,MC Frol,Young Haf,Lil Mar1k)
-      </span>
+      <span>Created by Sheen</span>
 
-      <p>© All Rights Reserved ept</p>
+      <p>© All Rights Reserved </p>
     </footer>
   );
 };
